@@ -1,4 +1,4 @@
-# 42 Matters Test - 1
+#42 Matters Test - 1
 Here is my solution to step 1 of the 42 Matters test.
 
 1.) Python script which allows us to generate the random source data and push it to a Postgres database.
