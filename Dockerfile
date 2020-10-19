@@ -11,7 +11,7 @@ RUN pip install -r requirements.txt
 # Bundle app source
 COPY src /app
 
-EXPOSE 5432
+EXPOSE 5432:5432
 RUN python data_gen.py \
     python table_packaging
 CMD [ "python", "src/s3_upload.py" ]

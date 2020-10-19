@@ -40,7 +40,8 @@ def csv_export():
 
     print(f'Successfully packed {t_dbname} table to csv')
 
+    # Not sure about this. Need to look into if this would work
     pd.read_csv("apps.csv",compression='gzip')
-    
+
 if __name__ == "__main__":
     csv_export()
