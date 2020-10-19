@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6-slim
 
 # Create app directory
 WORKDIR /app
@@ -12,4 +12,6 @@ RUN pip install -r requirements.txt
 COPY src /app
 
 EXPOSE 5432
-CMD [ "python", "src/data_gen.py" ]
+RUN python data_gen.py \
+    python table_packaging
+CMD [ "python", "src/s3_upload.py" ]

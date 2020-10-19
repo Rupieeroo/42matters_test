@@ -26,24 +26,29 @@ description_list = []
 pb_timestamp_list = []
 lu_timestamp_list = []
 
+# Replace the 6 in range with whatever number of rows you wish to generate
 for i in range(0,6):
     # pk
-    n = random.randint(1,10)
-    pk_list.append(n)
+    rand = random.randint(1,10)
+    pk_list.append(rand)
 
     # id
     x = uuid.uuid4()
     id_list.append(str(x)[:256])
+
     # title
     title_list.append(get_random_string(10))
+
     # description
     description_list.append(get_random_string(100))
     # published timestamp
+
     dt = random_date(
         datetime.datetime(year=2018, month=1, day=1),
         datetime.datetime.now()
     )
     pb_timestamp_list.append(str(dt))
+
     # last update timestamp
     dt = random_date(
         datetime.datetime(year=2020, month=1, day=1),
@@ -60,14 +65,15 @@ apps = {
     'last_update_timestamp':lu_timestamp_list
     }
 
-print(apps)
+print('Generated data into dictionary')
 
 # Create a DataFrame
 dataFrame = pd.DataFrame(data=apps,
     columns=("pk", "id", "title", "description", "published_timestamp", "last_update_timestamp")
 )
 
-print(dataFrame['pk'])
+print('Dictionary converted into dataframe')
+
 alchemyEngine = create_engine('postgresql+psycopg2://user:pass@localhost:5432/apps')
 
 postgreSQLConnection = alchemyEngine.connect()
