@@ -1,15 +1,19 @@
-#42 Matters Test - 1
+# 42 Matters Test - 1
 Here is my solution to step 1 of the 42 Matters test.
 
 1.) Python script which allows us to generate the random source data and push it to a Postgres database.
+
 2.) Python or shell script that allows to dump the data from Postgresql to a gzipped CSV file.
+
 3.) Python script for uploading the gzipped CSV to Amazon S3.
 
 ## Structure
 The steps are split into the three python files: 
 
 1.) 'data_gen.py' generates a random amount of data and inputs it to a dataframe.
+
 2.) 'table_packaging.py' packages the dataframe into a csv and gzips it.
+
 3.) 's3_upload.py' takes the table and uploads it to an s3 bucket.
 
 A Dockerfile is used to create an isolated environment and run the commands in sequence. The end result of running the Dockerfile will be to upload the gzipped csv file to an Amazon s3 bucket.
