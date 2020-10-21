@@ -18,7 +18,7 @@ SELECT *
 FROM apps;
 ```
 yielded the following result:
-
+![Select Statement](./select_screenshot.png)
 
 ### Insert values
 'insert_values.sql' is quite straight forward. It inserts the values from the desired outcome table, excluding the primary key which is generated automatically.
@@ -33,7 +33,7 @@ FROM apps a
 ORDER BY a.title, a.last_update_date DESC;
 ```
 Yielded the following result:
-
+![Query Statement](./query_screenshot.png)
 
 ## Conclusion
 This was a fun problem to solve and helped me gain a better understanding of PostgresSQL's syntax (I have been dealing with Oracle and SnowSQL a lot more recently). The datatypes could be adjusted depending on what would be required of the table and I could also add NOT NULL constraints etc. I also believe that if the desired result was to only show the latest data for each app it would be better to drop or truncate the rows where the 'title' or 'id' is = to the new data if this were a production table.
