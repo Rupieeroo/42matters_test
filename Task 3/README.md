@@ -36,4 +36,17 @@ Yielded the following result:
 ![Query Statement](./query_screenshot.png)
 
 ## Conclusion
-This was a fun problem to solve and helped me gain a better understanding of PostgresSQL's syntax (I have been dealing with Oracle and SnowSQL a lot more recently). The datatypes could be adjusted depending on what would be required of the table and I could also add NOT NULL constraints etc. I also believe that if the desired result was to only show the latest data for each app it would be better to drop or truncate the rows where the 'title' or 'id' is = to the new data if this were a production table.
+This was a fun problem to solve and helped me gain a better understanding of PostgresSQL's syntax (I have been dealing with Oracle and SnowSQL a lot more recently). As an alternative to the query above, it could have been solved more conventianally like this:
+```
+SELECT a.*
+FROM apps a
+inner join
+(SELECT id, MAX(last_update_date) AS last_update_date
+FROM apps
+GROUP BY id) b
+ON a.id=b.id AND a.last_update_date=b.last_update_date
+ORDER BY a.last_update_date DESC;
+```
+But I prefered the ease of reading in my solution.
+
+The datatypes could be adjusted depending on what would be required of the table and I could also add NOT NULL constraints etc. I also believe that if the desired result was to only show the latest data for each app it would be better to drop or truncate the rows where the 'title' or 'id' is = to the new data if this were a production table.
